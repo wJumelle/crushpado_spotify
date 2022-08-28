@@ -1,0 +1,30 @@
+:root,
+::before,
+::after {
+    --clr-dark: #0B0816;
+}
+
+body {
+    background-color: var(--clr-dark);
+}
+
+.sr-only {
+    position: absolute;
+    left: -9999px;
+}
+
+.cp-global-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+h1 {
+    max-width: 50%;
+}
+
+h1 img {
+    display: block;
+    max-width: 100%;
+}
