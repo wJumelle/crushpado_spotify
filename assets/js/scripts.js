@@ -1,5 +1,6 @@
 /**
  * Code de connexion à Spotify
+ * Documentation : https://developer.spotify.com/documentation/web-api/quick-start/
  * Ex: https://www.youtube.com/watch?v=0dmS0He_czs&ab_channel=SamCodes
  * Ex 2 : https://www.youtube.com/watch?v=1vR3m0HupGI&ab_channel=MakerAtPlayCoding
  */
