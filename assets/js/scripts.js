@@ -9,9 +9,21 @@ class SpotifyController {
         this.client_id = cid;
         this.client_secret = cs;
         this.redirect_uri = 'https://www.gwendoline-jumelle.ovh/crushetpado/';
+        this.token = null;
+        this.tracks = null;
     }
 
     // const scope = 'user-read-private user-read-email playlist-read-collaborative';
+
+    initController = async () => {
+        // Vérification d'un token déjà existant
+
+        // Récupération et stockage du token
+        this.token = await this.getToken();
+
+        // Consommation de l'API
+        this.tracks = await this.getPlaylist();
+    }
 
     getToken = async () => {
         const result = await fetch('https://accounts.spotify.com/api/token', {
@@ -26,6 +38,20 @@ class SpotifyController {
         const data = await result.json();
         return data.access_token;
     }
+
+    getPlaylist = async () => {
+        const result = await fetch('https://api.spotify.com/v1/playlists/70nqlN9T0zppBlK3nIcozi/', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'Authorization': 'Bearer ' + this.token
+            }
+        });
+
+        const data = await result.json();
+        return data.tracks ;
+    }
 };
 
 const controller = new SpotifyController('a225b85255bf45c09dd4be908cef0d4b', 'b60a4e7ecf2846debb1eb6886f609f51');
+controller.initController();
